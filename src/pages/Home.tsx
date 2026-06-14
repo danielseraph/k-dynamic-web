@@ -113,7 +113,7 @@ export default function Home() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              K-TECH DYNAMIC LTD delivers integrated marine logistics, vessel management, offshore support, marine fuel supply, tugboat services, barge operations, marine equipment solutions, vessel inspections, and repairs across Nigeria.
+              K-TECH DYNAMIC LTD delivers integrated marine logistics, vessel management, offshore support, marine fuel supply, tugboat services, barge operations, marine equipment solutions, vessel inspections, sales of marine vessels, and repairs.
             </motion.p>
 
             <motion.div
