@@ -30,12 +30,13 @@ CERTIFICATIONS & COMPLIANCE:
 
 LAGOS OFFICE:
 12 Marine View Close, Apapa, Lagos, Nigeria.
-Email: lagos@ktechdynamic.com | Tel: +234 (1) 454-9080
+Email: ktechdynamicltd@gmail.com | Tel: +234 9013351077
 
 PORT HARCOURT OFFICE:
 Plot 88 Trans-Amadi Industrial Layout, Port Harcourt, Rivers State, Nigeria.
-Email: ph@ktechdynamic.com | Tel: +234 (84) 330-1200
+Email: ktechdynamicltd@gmail.com | Tel: +234 9013351077
 
+WhatsApp Support: +234 8059312366
 Website: www.ktechdynamic.com
 =========================================
 Copyright 2026 K-TECH DYNAMIC LTD. All Rights Reserved.

@@ -46,15 +46,15 @@ export default function Contact() {
     lagos: {
       name: 'Lagos Head Office',
       address: '12 Marine View Close, Apapa, Lagos, Nigeria.',
-      phone: '+234 (1) 454-9080, +234 (0) 803-345-6789',
-      email: 'lagos@ktechdynamic.com',
+      phone: '+234 9013351077 (Tel), +234 8059312366 (WhatsApp)',
+      email: 'ktechdynamicltd@gmail.com',
       coord: 'Latitude: 6.4420° N, Longitude: 3.3644° E (Apapa Port District)'
     },
     ph: {
       name: 'Port Harcourt Branch Office',
       address: 'Plot 88 Trans-Amadi Industrial Layout, Port Harcourt, Rivers State, Nigeria.',
-      phone: '+234 (84) 330-1200, +234 (0) 812-987-6543',
-      email: 'ph@ktechdynamic.com',
+      phone: '+234 9013351077 (Tel), +234 8059312366 (WhatsApp)',
+      email: 'ktechdynamicltd@gmail.com',
       coord: 'Latitude: 4.8156° N, Longitude: 7.0498° E (Trans-Amadi Operations)'
     }
   };

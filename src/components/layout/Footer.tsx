@@ -163,11 +163,11 @@ export default function Footer() {
               </div>
               <div className="flex items-center gap-2">
                 <Phone className="w-3.5 h-3.5 text-teal-accent shrink-0" />
-                <span>+234 (1) 454-9080</span>
+                <span>+234 9013351077 (Tel) | +234 8059312366 (WA)</span>
               </div>
               <div className="flex items-center gap-2">
                 <Mail className="w-3.5 h-3.5 text-teal-accent shrink-0" />
-                <span>ops@ktechdynamic.com</span>
+                <span>ktechdynamicltd@gmail.com</span>
               </div>
             </div>
           </div>

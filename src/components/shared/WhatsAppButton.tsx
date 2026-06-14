@@ -3,7 +3,7 @@ import { PhoneCall } from 'lucide-react';
 
 export default function WhatsAppButton() {
   // Prefilled message for K-TECH support line
-  const whatsappUrl = 'https://wa.me/2348000000000?text=Hello%20K-TECH%20DYNAMIC%20LTD,%20I%20would%20like%20to%20inquire%20about%20your%20marine%20and%20offshore%20services.';
+  const whatsappUrl = 'https://wa.me/2348059312366?text=Hello%20K-TECH%20DYNAMIC%20LTD,%20I%20would%20like%20to%20inquire%20about%20your%20marine%20and%20offshore%20services.';
 
   return (
     <motion.a
