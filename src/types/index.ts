@@ -74,3 +74,30 @@ export interface Testimonial {
   rating: number;
   logoType: 'logo1' | 'logo2' | 'logo3' | 'logo4';
 }
+
+export interface Equipment {
+  id: string;
+  name: string;
+  type: 'Fenders' | 'Hoses' | 'Anchors' | 'Spill Response' | 'Other';
+  specs: string;
+  quantity: number;
+  status: 'Available' | 'Leased' | 'Maintenance';
+  image: string;
+  description: string;
+  createdAt?: string;
+}
+
+export interface Message {
+  id: string;
+  name: string;
+  email: string;
+  phone: string;
+  company: string;
+  serviceNeeded: string;
+  message: string;
+  messageType: 'Contact' | 'Quote';
+  status: 'Unread' | 'Read' | 'Replied';
+  quoteDetails?: string | null;
+  createdAt: string;
+  updatedAt?: string;
+}

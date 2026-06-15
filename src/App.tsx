@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Outlet } from 'react-router-dom';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 import ScrollProgress from './components/layout/ScrollProgress';
@@ -15,8 +15,38 @@ import Industries from './pages/Industries';
 import Team from './pages/Team';
 import Contact from './pages/Contact';
 import RequestQuote from './pages/RequestQuote';
+import Portal from './pages/Portal';
+
+// Admin Page Imports
+import AdminLayout from './components/admin/AdminLayout';
+import AdminLogin from './pages/admin/Login';
+import AdminDashboard from './pages/admin/Dashboard';
+import AdminVessels from './pages/admin/VesselsManager';
+import AdminTeam from './pages/admin/TeamManager';
+import AdminEquipment from './pages/admin/EquipmentManager';
+import AdminMessages from './pages/admin/MessagesManager';
 
 import './App.css';
+
+function PublicLayout() {
+  return (
+    <div className="flex flex-col min-h-screen bg-bg-slate text-text-primary antialiased font-sans">
+      {/* Navigation Bar */}
+      <Navbar />
+
+      {/* Dynamic Route Content */}
+      <main className="flex-grow">
+        <Outlet />
+      </main>
+
+      {/* Global Footer */}
+      <Footer />
+
+      {/* Floating WhatsApp Action Widget */}
+      <WhatsAppButton />
+    </div>
+  );
+}
 
 export default function App() {
   return (
@@ -27,34 +57,35 @@ export default function App() {
       {/* Global Scroll Progress Indicator */}
       <ScrollProgress />
 
-      {/* Main Layout Wrap */}
-      <div className="flex flex-col min-h-screen bg-bg-slate text-text-primary antialiased font-sans">
-        
-        {/* Navigation Bar */}
-        <Navbar />
+      <Routes>
+        {/* Portal Gateway Splash Route (Fullscreen) */}
+        <Route path="/" element={<Portal />} />
 
-        {/* Dynamic Route Content */}
-        <main className="flex-grow">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/services" element={<Services />} />
-            <Route path="/fleet" element={<Fleet />} />
-            <Route path="/fleet/:id" element={<VesselDetail />} />
-            <Route path="/industries" element={<Industries />} />
-            <Route path="/team" element={<Team />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/request-quote" element={<RequestQuote />} />
-          </Routes>
-        </main>
+        {/* Public Routes inside standard Shared Layout */}
+        <Route element={<PublicLayout />}>
+          <Route path="/home" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/services" element={<Services />} />
+          <Route path="/fleet" element={<Fleet />} />
+          <Route path="/fleet/:id" element={<VesselDetail />} />
+          <Route path="/industries" element={<Industries />} />
+          <Route path="/team" element={<Team />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/request-quote" element={<RequestQuote />} />
+        </Route>
 
-        {/* Global Footer */}
-        <Footer />
+        {/* Admin Login Route */}
+        <Route path="/admin/login" element={<AdminLogin />} />
 
-        {/* Floating WhatsApp Action Widget */}
-        <WhatsAppButton />
-        
-      </div>
+        {/* Protected Admin Console Routes */}
+        <Route element={<AdminLayout />}>
+          <Route path="/admin" element={<AdminDashboard />} />
+          <Route path="/admin/vessels" element={<AdminVessels />} />
+          <Route path="/admin/team" element={<AdminTeam />} />
+          <Route path="/admin/equipment" element={<AdminEquipment />} />
+          <Route path="/admin/messages" element={<AdminMessages />} />
+        </Route>
+      </Routes>
     </Router>
   );
 }

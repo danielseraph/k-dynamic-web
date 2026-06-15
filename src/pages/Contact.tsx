@@ -5,6 +5,7 @@ import * as z from 'zod';
 import { Mail, Phone, MapPin, Loader2, Send, CheckCircle2 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import SEO from '../components/shared/SEO';
+import { api } from '../services/api';
 
 // Zod validation schema
 const contactFormSchema = z.object({
@@ -34,28 +35,39 @@ export default function Contact() {
 
   const onSubmit = async (data: ContactFormValues) => {
     setIsSubmitting(true);
-    console.log('Contact form submitted:', data);
-    // Simulate API request
-    await new Promise((resolve) => setTimeout(resolve, 2000));
-    setIsSubmitting(false);
-    setSubmitSuccess(true);
-    reset();
+    try {
+      await api.messages.submit({
+        name: data.name,
+        email: data.email,
+        phone: data.phone,
+        company: data.company,
+        serviceNeeded: data.serviceNeeded,
+        message: data.message,
+        messageType: 'Contact'
+      });
+      setSubmitSuccess(true);
+      reset();
+    } catch (err: any) {
+      alert(err.message || 'Failed to submit inquiry. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const offices = {
     lagos: {
       name: 'Lagos Head Office',
-      address: '12 Marine View Close, Apapa, Lagos, Nigeria.',
+      address: '7 Jimmy oche Street Akessan, Igando Lagos State Nigeria',
       phone: '+234 9013351077 (Tel), +234 8059312366 (WhatsApp)',
       email: 'ktechdynamicltd@gmail.com',
-      coord: 'Latitude: 6.4420° N, Longitude: 3.3644° E (Apapa Port District)'
+      coord: 'Latitude: 6.5614° N, Longitude: 3.2372° E (Lagos West District)'
     },
     ph: {
       name: 'Port Harcourt Branch Office',
-      address: 'Plot 88 Trans-Amadi Industrial Layout, Port Harcourt, Rivers State, Nigeria.',
+      address: '53 Evo Road GRA phase 2, Port Harcourt Rivers State Nigeria',
       phone: '+234 9013351077 (Tel), +234 8059312366 (WhatsApp)',
       email: 'ktechdynamicltd@gmail.com',
-      coord: 'Latitude: 4.8156° N, Longitude: 7.0498° E (Trans-Amadi Operations)'
+      coord: 'Latitude: 4.8150° N, Longitude: 7.0012° E (GRA Phase 2)'
     }
   };
 
@@ -63,7 +75,7 @@ export default function Contact() {
     <>
       <SEO
         title="Contact Us - Lagos & Port Harcourt Marine Offices"
-        description="Get in touch with K-TECH DYNAMIC LTD. Call our Lagos (Apapa) or Port Harcourt (Trans-Amadi) office, or submit an operational inquiry online."
+        description="Get in touch with K-TECH DYNAMIC LTD. Call our Lagos (Igando) or Port Harcourt (GRA Phase 2) office, or submit an operational inquiry online."
       />
 
       {/* Hero Banner */}
@@ -172,7 +184,7 @@ export default function Contact() {
                       <div className="w-2.5 h-2.5 bg-teal-accent rounded-full animate-ping" />
                     </div>
                     <span className="text-[9px] uppercase tracking-widest font-bold text-teal-accent mt-2">
-                      KT {activeOffice === 'lagos' ? 'Apapa Base' : 'PH Terminal'}
+                      KT {activeOffice === 'lagos' ? 'Lagos Base' : 'PH Base'}
                     </span>
                   </div>
                 </div>

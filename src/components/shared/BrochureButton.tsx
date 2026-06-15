@@ -29,11 +29,11 @@ CERTIFICATIONS & COMPLIANCE:
 * Full compliance with Local Content Development Act (100% Indigenous)
 
 LAGOS OFFICE:
-12 Marine View Close, Apapa, Lagos, Nigeria.
+7 Jimmy oche Street Akessan, Igando Lagos State Nigeria
 Email: ktechdynamicltd@gmail.com | Tel: +234 9013351077
 
 PORT HARCOURT OFFICE:
-Plot 88 Trans-Amadi Industrial Layout, Port Harcourt, Rivers State, Nigeria.
+53 Evo Road GRA phase 2, Port Harcourt Rivers State Nigeria
 Email: ktechdynamicltd@gmail.com | Tel: +234 9013351077
 
 WhatsApp Support: +234 8059312366

@@ -3,10 +3,36 @@ import { useSearchParams, Link } from 'react-router-dom';
 import { Search, SlidersHorizontal, Maximize2, ShieldCheck, Ship, Calendar, X, AlertCircle } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import SEO from '../components/shared/SEO';
-import { vesselsData } from '../data/vessels';
+import { vesselsData as staticVesselsData } from '../data/vessels';
 import type { Vessel } from '../types';
+import { api, getImageUrl } from '../services/api';
 
 export default function Fleet() {
+  const [vesselsList, setVesselsList] = useState<Vessel[]>([]);
+
+  useEffect(() => {
+    api.vessels.getAll()
+      .then((data) => {
+        if (data && data.length > 0) {
+          setVesselsList(data);
+        } else {
+          setVesselsList(staticVesselsData);
+        }
+      })
+      .catch(() => {
+        setVesselsList(staticVesselsData);
+      });
+  }, []);
+
+  const parseSafetyCertifications = (certs: any): string[] => {
+    if (!certs) return [];
+    if (Array.isArray(certs)) return certs;
+    try {
+      return JSON.parse(certs);
+    } catch {
+      return [];
+    }
+  };
   const [searchParams, setSearchParams] = useSearchParams();
   const vesselQueryParam = searchParams.get('vessel');
 
@@ -19,13 +45,13 @@ export default function Fleet() {
 
   // Watch query params to auto-open modal for a specific vessel (e.g. from Home page link)
   useEffect(() => {
-    if (vesselQueryParam) {
-      const v = vesselsData.find((item) => item.id === vesselQueryParam);
+    if (vesselQueryParam && vesselsList.length > 0) {
+      const v = vesselsList.find((item) => item.id === vesselQueryParam);
       if (v) {
         setSelectedVessel(v);
       }
     }
-  }, [vesselQueryParam]);
+  }, [vesselQueryParam, vesselsList]);
 
   // Handle closing modal and removing query param
   const closeModal = () => {
@@ -36,7 +62,7 @@ export default function Fleet() {
   };
 
   // Filter & Sort Logic
-  const filteredVessels = vesselsData
+  const filteredVessels = vesselsList
     .filter((vessel) => {
       const matchesSearch =
         vessel.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -161,7 +187,7 @@ export default function Fleet() {
                     {/* Vessel image with status badge */}
                     <div className="relative h-56 overflow-hidden">
                       <img
-                        src={vessel.image}
+                        src={getImageUrl(vessel.image)}
                         alt={vessel.name}
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                       />
@@ -281,7 +307,7 @@ export default function Fleet() {
                 {/* Visual Section - Image & Gallery */}
                 <div className="md:col-span-5 bg-slate-900 relative flex flex-col justify-between min-h-[300px]">
                   <img
-                    src={selectedVessel.image}
+                    src={getImageUrl(selectedVessel.image)}
                     alt={selectedVessel.name}
                     className="w-full h-full object-cover absolute inset-0 opacity-80"
                   />
@@ -371,7 +397,7 @@ export default function Fleet() {
                       <span>Class & Certifications</span>
                     </h5>
                     <ul className="flex flex-col gap-1.5 text-xs text-slate-500 pl-1.5">
-                      {selectedVessel.safetyCertifications.map((cert, idx) => (
+                      {parseSafetyCertifications(selectedVessel.safetyCertifications).map((cert, idx) => (
                         <li key={idx} className="flex gap-2 items-start leading-tight">
                           <span className="text-teal-accent font-bold">✔</span>
                           <span>{cert}</span>

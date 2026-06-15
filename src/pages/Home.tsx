@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
@@ -19,14 +19,31 @@ import AnimatedCounter from '../components/shared/AnimatedCounter';
 import ServiceIcon from '../components/shared/ServiceIcon';
 import BrochureButton from '../components/shared/BrochureButton';
 import { servicesData } from '../data/services';
-import { vesselsData } from '../data/vessels';
+import { vesselsData as staticVesselsData } from '../data/vessels';
 import { testimonialsData } from '../data/testimonials';
 import { industriesData } from '../data/industries';
+import { api, getImageUrl } from '../services/api';
+import type { Vessel } from '../types';
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState<'mission' | 'vision' | 'values'>('mission');
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
   const [vesselIndex, setVesselIndex] = useState(0);
+  const [vesselsList, setVesselsList] = useState<Vessel[]>([]);
+
+  useEffect(() => {
+    api.vessels.getAll()
+      .then((data) => {
+        if (data && data.length > 0) {
+          setVesselsList(data);
+        } else {
+          setVesselsList(staticVesselsData);
+        }
+      })
+      .catch(() => {
+        setVesselsList(staticVesselsData);
+      });
+  }, []);
 
   // Trust Indicators Data
   const trustIndicators = [
@@ -68,10 +85,12 @@ export default function Home() {
 
   // Vessel Showcase Controls
   const nextVessel = () => {
-    setVesselIndex((prev) => (prev + 1) % vesselsData.length);
+    if (vesselsList.length === 0) return;
+    setVesselIndex((prev) => (prev + 1) % vesselsList.length);
   };
   const prevVessel = () => {
-    setVesselIndex((prev) => (prev - 1 + vesselsData.length) % vesselsData.length);
+    if (vesselsList.length === 0) return;
+    setVesselIndex((prev) => (prev - 1 + vesselsList.length) % vesselsList.length);
   };
 
   return (
@@ -401,7 +420,7 @@ export default function Home() {
           {/* Carousel container */}
           <div className="relative overflow-hidden min-h-[460px]">
             <AnimatePresence mode="wait">
-              {vesselsData.map((vessel, idx) => {
+              {vesselsList.map((vessel, idx) => {
                 if (idx !== vesselIndex) return null;
                 return (
                   <motion.div
@@ -455,7 +474,7 @@ export default function Home() {
                     {/* Vessel Image */}
                     <div className="lg:col-span-7 relative">
                       <img
-                        src={vessel.image}
+                        src={getImageUrl(vessel.image)}
                         alt={vessel.name}
                         className="w-full h-[380px] object-cover rounded-xl shadow-2xl border border-white/10"
                       />

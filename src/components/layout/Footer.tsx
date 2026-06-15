@@ -20,7 +20,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           {/* Company Summary */}
           <div className="flex flex-col gap-4">
-            <Link to="/" className="flex items-center gap-3 text-white">
+            <Link to="/home" className="flex items-center gap-3 text-white">
               <img
                 src="/logo.png"
                 alt="K-TECH DYNAMIC Logo"
@@ -159,7 +159,7 @@ export default function Footer() {
             <div className="mt-6 flex flex-col gap-2.5 text-xs text-slate-400">
               <div className="flex items-center gap-2">
                 <MapPin className="w-3.5 h-3.5 text-teal-accent shrink-0" />
-                <span>Apapa, Lagos & Trans-Amadi, Port Harcourt</span>
+                <span>Igando, Lagos & GRA Phase 2, Port Harcourt</span>
               </div>
               <div className="flex items-center gap-2">
                 <Phone className="w-3.5 h-3.5 text-teal-accent shrink-0" />

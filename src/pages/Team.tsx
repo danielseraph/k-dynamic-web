@@ -1,11 +1,40 @@
+import { useState, useEffect } from 'react';
 import { Award, ShieldCheck, UserCheck } from 'lucide-react';
 import SEO from '../components/shared/SEO';
-import { teamData } from '../data/team';
+import { teamData as staticTeamData } from '../data/team';
+import { api, getImageUrl } from '../services/api';
+import type { TeamMember } from '../types';
 
 export default function Team() {
-  const executives = teamData.filter((t) => t.category === 'executive');
-  const managers = teamData.filter((t) => t.category === 'management');
-  const supervisors = teamData.filter((t) => t.category === 'supervisory');
+  const [teamList, setTeamList] = useState<TeamMember[]>([]);
+
+  useEffect(() => {
+    api.team.getAll()
+      .then((data) => {
+        if (data && data.length > 0) {
+          setTeamList(data);
+        } else {
+          setTeamList(staticTeamData);
+        }
+      })
+      .catch(() => {
+        setTeamList(staticTeamData);
+      });
+  }, []);
+
+  const parseResponsibilities = (resp: any): string[] => {
+    if (!resp) return [];
+    if (Array.isArray(resp)) return resp;
+    try {
+      return JSON.parse(resp);
+    } catch {
+      return [];
+    }
+  };
+
+  const executives = teamList.filter((t) => t.category === 'executive');
+  const managers = teamList.filter((t) => t.category === 'management');
+  const supervisors = teamList.filter((t) => t.category === 'supervisory');
 
   return (
     <>
@@ -52,7 +81,7 @@ export default function Team() {
                 {/* Image */}
                 <div className="md:col-span-4 relative group">
                   <img
-                    src={member.image}
+                    src={getImageUrl(member.image)}
                     alt={member.name}
                     className="w-full h-72 object-cover rounded-xl shadow border border-slate-200"
                   />
@@ -84,7 +113,7 @@ export default function Team() {
                       <span>Key Responsibilities</span>
                     </h4>
                     <ul className="flex flex-col gap-1.5 text-xs text-slate-500">
-                      {member.responsibilities.map((resp, i) => (
+                      {parseResponsibilities(member.responsibilities).map((resp, i) => (
                         <li key={i} className="flex gap-2 items-start leading-tight">
                           <span className="text-teal-accent font-bold">✔</span>
                           <span>{resp}</span>
@@ -134,7 +163,7 @@ export default function Team() {
                 {/* Image */}
                 <div className="md:col-span-4 relative">
                   <img
-                    src={member.image}
+                    src={getImageUrl(member.image)}
                     alt={member.name}
                     className="w-full h-48 object-cover rounded-xl border border-slate-100"
                   />
@@ -165,7 +194,7 @@ export default function Team() {
                       <span>Operational Focus</span>
                     </h4>
                     <ul className="flex flex-col gap-1 text-[11px] text-slate-500">
-                      {member.responsibilities.slice(0, 2).map((resp, i) => (
+                      {parseResponsibilities(member.responsibilities).slice(0, 2).map((resp, i) => (
                         <li key={i} className="flex gap-1.5 items-start">
                           <span className="text-teal-accent font-bold">✔</span>
                           <span className="truncate">{resp}</span>
@@ -203,7 +232,7 @@ export default function Team() {
                 {/* Image */}
                 <div className="md:col-span-4">
                   <img
-                    src={member.image}
+                    src={getImageUrl(member.image)}
                     alt={member.name}
                     className="w-full h-44 object-cover rounded-xl border border-slate-100"
                   />

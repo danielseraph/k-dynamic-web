@@ -1,11 +1,63 @@
+import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { ArrowLeft, ShieldCheck, AlertCircle, CheckCircle2 } from 'lucide-react';
 import SEO from '../components/shared/SEO';
-import { vesselsData } from '../data/vessels';
+import { vesselsData as staticVesselsData } from '../data/vessels';
+import { api, getImageUrl } from '../services/api';
+import type { Vessel } from '../types';
 
 export default function VesselDetail() {
   const { id } = useParams<{ id: string }>();
-  const vessel = vesselsData.find((v) => v.id === id);
+  const [vessel, setVessel] = useState<Vessel | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    if (!id) return;
+    setIsLoading(true);
+    api.vessels.getOne(id)
+      .then((data) => {
+        setVessel(data);
+      })
+      .catch(() => {
+        // Fallback to static
+        const fallback = staticVesselsData.find((v) => v.id === id);
+        setVessel(fallback || null);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
+  }, [id]);
+
+  const parseSafetyCertifications = (certs: any): string[] => {
+    if (!certs) return [];
+    if (Array.isArray(certs)) return certs;
+    try {
+      return JSON.parse(certs);
+    } catch {
+      return [];
+    }
+  };
+
+  const parseGallery = (gal: any): string[] => {
+    if (!gal) return [];
+    if (Array.isArray(gal)) return gal;
+    try {
+      return JSON.parse(gal);
+    } catch {
+      return [];
+    }
+  };
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen bg-slate-50 flex items-center justify-center p-4">
+        <div className="flex flex-col items-center gap-3 text-ocean-blue">
+          <div className="h-8 w-8 animate-spin rounded-full border-2 border-ocean-blue border-t-transparent"></div>
+          <span className="text-xs font-mono uppercase">Retrieving datasheet...</span>
+        </div>
+      </div>
+    );
+  }
 
   if (!vessel) {
     return (
@@ -76,7 +128,7 @@ export default function VesselDetail() {
                   Vessel Gallery
                 </h3>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                  {vessel.gallery.map((imgUrl, index) => (
+                  {parseGallery(vessel.gallery).map((imgUrl, index) => (
                     <div
                       key={index}
                       className={`relative overflow-hidden rounded-xl bg-slate-100 ${
@@ -84,7 +136,7 @@ export default function VesselDetail() {
                       }`}
                     >
                       <img
-                        src={imgUrl}
+                        src={getImageUrl(imgUrl)}
                         alt={`${vessel.name} detail view ${index + 1}`}
                         className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                       />
@@ -190,7 +242,7 @@ export default function VesselDetail() {
                   <span>Compliance Certifications</span>
                 </h3>
                 <ul className="flex flex-col gap-3 text-xs text-slate-500">
-                  {vessel.safetyCertifications.map((cert, idx) => (
+                  {parseSafetyCertifications(vessel.safetyCertifications).map((cert, idx) => (
                     <li key={idx} className="flex gap-2 items-start leading-relaxed border-b border-slate-50 pb-2 last:border-0 last:pb-0">
                       <CheckCircle2 className="w-4 h-4 text-teal-accent shrink-0 mt-0.5" />
                       <span>{cert}</span>

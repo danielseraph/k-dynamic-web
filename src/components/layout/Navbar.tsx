@@ -4,7 +4,7 @@ import { Menu, X, ChevronRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const menuItems = [
-  { name: 'Home', path: '/' },
+  { name: 'Home', path: '/home' },
   { name: 'About', path: '/about' },
   { name: 'Services', path: '/services' },
   { name: 'Fleet', path: '/fleet' },
@@ -38,7 +38,7 @@ export default function Navbar() {
 
   // Determine if the navbar should start transparent
   // Home page or pages with big heroes start transparent, others can start solid
-  const isHome = location.pathname === '/';
+  const isHome = location.pathname === '/home';
   const isTransparent = isHome && !isScrolled;
 
   return (
@@ -53,7 +53,7 @@ export default function Navbar() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between">
             {/* Logo */}
-            <Link to="/" className="flex items-center gap-3 group text-white">
+            <Link to="/home" className="flex items-center gap-3 group text-white">
               <img
                 src="/logo.png"
                 alt="K-TECH DYNAMIC Logo"

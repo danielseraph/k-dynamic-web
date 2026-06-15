@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import SEO from '../components/shared/SEO';
 import { vesselsData } from '../data/vessels';
 import { servicesData } from '../data/services';
+import { api } from '../services/api';
 
 const steps = [
   { id: 1, name: 'Company Info' },
@@ -148,10 +149,23 @@ export default function RequestQuote() {
 
   const handleSubmitQuote = async () => {
     setIsSubmitting(true);
-    // Simulate API submission
-    await new Promise((resolve) => setTimeout(resolve, 2500));
-    setIsSubmitting(false);
-    setSuccess(true);
+    try {
+      await api.messages.submit({
+        name: formData.contactName,
+        email: formData.email,
+        phone: formData.phone,
+        company: formData.companyName,
+        serviceNeeded: formData.selectedServices.join(', '),
+        message: formData.details,
+        messageType: 'Quote',
+        quoteDetails: formData
+      });
+      setSuccess(true);
+    } catch (err: any) {
+      alert(err.message || 'Failed to submit quote request. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const resetWizard = () => {
