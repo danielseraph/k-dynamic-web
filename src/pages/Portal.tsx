@@ -35,7 +35,7 @@ export default function Portal() {
 
       <div 
         className="min-h-screen flex flex-col justify-between items-center py-16 px-6 text-center select-none font-sans relative overflow-hidden bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: "url('/portal_vessel_bg.png')" }}
+        style={{ backgroundImage: "url('/page.jpeg')" }}
       >
         {/* Dark Overlay for Readability */}
         <div className="absolute inset-0 bg-[#0d1521]/85 backdrop-blur-[1px] pointer-events-none" />
