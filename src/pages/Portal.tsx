@@ -84,7 +84,7 @@ export default function Portal() {
               </p>
               <Link
                 to="/home"
-                className="w-full max-w-[280px] py-4 bg-ocean-blue hover:bg-[#004b7c] text-white font-sans text-sm font-bold tracking-[0.2em] rounded-lg shadow-lg hover:shadow-ocean-blue/30 transition-all duration-200 flex items-center justify-center transform hover:-translate-y-0.5"
+                className="w-full max-w-[280px] py-4 bg-orange-cta hover:bg-orange-600 text-white font-sans text-sm font-bold tracking-[0.2em] rounded-lg shadow-lg hover:shadow-orange-cta/30 transition-all duration-200 flex items-center justify-center transform hover:-translate-y-0.5"
               >
                 ENTER
               </Link>
@@ -100,7 +100,7 @@ export default function Portal() {
               </p>
               <Link
                 to="/fleet"
-                className="w-full max-w-[280px] py-4 bg-ocean-blue hover:bg-[#004b7c] text-white font-sans text-sm font-bold tracking-[0.2em] rounded-lg shadow-lg hover:shadow-ocean-blue/30 transition-all duration-200 flex items-center justify-center transform hover:-translate-y-0.5"
+                className="w-full max-w-[280px] py-4 bg-orange-cta hover:bg-orange-600 text-white font-sans text-sm font-bold tracking-[0.2em] rounded-lg shadow-lg hover:shadow-orange-cta/30 transition-all duration-200 flex items-center justify-center transform hover:-translate-y-0.5"
               >
                 ENTER
               </Link>
