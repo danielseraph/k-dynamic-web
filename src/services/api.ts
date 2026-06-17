@@ -6,7 +6,7 @@ export const SERVER_ORIGIN = 'https://k-dynamic-api.onrender.com';
 // Helper to construct full image URLs
 export function getImageUrl(path: string | undefined | null): string {
   if (!path) return '/placeholder-vessel.jpeg'; // fallback placeholder
-  if (path.startsWith('http://') || path.startsWith('https://')) {
+  if (path.startsWith('https://')) {
     return path;
   }
   // If it's stored as local assets or starts with public

@@ -38,11 +38,11 @@ export default function Portal() {
         style={{ backgroundImage: "url('/page.jpeg')" }}
       >
         {/* Dark Overlay for Readability */}
-        <div className="absolute inset-0 bg-[#0d1521]/85 backdrop-blur-[1px] pointer-events-none" />
+        <div className="absolute inset-0 bg-primary-navy/85 backdrop-blur-[1px] pointer-events-none" />
 
         {/* Subtle Background Glows */}
         <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-teal-accent/5 rounded-full blur-[120px] pointer-events-none" />
-        <div className="absolute bottom-1/4 left-1/3 w-[500px] h-[500px] bg-[#ff4f38]/5 rounded-full blur-[100px] pointer-events-none" />
+        <div className="absolute bottom-1/4 left-1/3 w-[500px] h-[500px] bg-orange-cta/5 rounded-full blur-[100px] pointer-events-none" />
 
         {/* Top Spacer */}
         <div className="w-full max-w-lg z-10" />
@@ -64,11 +64,11 @@ export default function Portal() {
               />
               <div className="flex flex-col font-headings text-white tracking-wider leading-none">
                 <span className="text-2xl sm:text-3xl font-extrabold tracking-[0.1em]">K-TECH</span>
-                <span className="text-xl sm:text-2xl font-bold text-[#ff4f38] tracking-[0.05em] mt-1">DYNAMIC</span>
+                <span className="text-xl sm:text-2xl font-bold text-teal-accent tracking-[0.05em] mt-1">DYNAMIC</span>
                 <span className="text-lg sm:text-xl font-semibold text-slate-300 tracking-[0.15em] mt-1">SERVICES</span>
               </div>
             </div>
-            <div className="w-20 h-[3px] bg-[#ff4f38] rounded-full mt-2" />
+            <div className="w-20 h-[3px] bg-teal-accent rounded-full mt-2" />
           </motion.div>
 
           {/* Portal Entries Block */}
@@ -84,7 +84,7 @@ export default function Portal() {
               </p>
               <Link
                 to="/home"
-                className="w-full max-w-[280px] py-3.5 bg-[#ff4f38] hover:bg-[#e03d27] text-white font-headings text-sm font-extrabold tracking-[0.25em] rounded shadow-lg shadow-[#ff4f38]/10 hover:shadow-[#ff4f38]/20 transition-all duration-350 flex items-center justify-center border border-[#ff4f38]/20 transform hover:-translate-y-0.5"
+                className="w-full max-w-[280px] py-4 bg-ocean-blue hover:bg-[#004b7c] text-white font-sans text-sm font-bold tracking-[0.2em] rounded-lg shadow-lg hover:shadow-ocean-blue/30 transition-all duration-200 flex items-center justify-center transform hover:-translate-y-0.5"
               >
                 ENTER
               </Link>
@@ -100,7 +100,7 @@ export default function Portal() {
               </p>
               <Link
                 to="/fleet"
-                className="w-full max-w-[280px] py-3.5 bg-[#ff4f38] hover:bg-[#e03d27] text-white font-headings text-sm font-extrabold tracking-[0.25em] rounded shadow-lg shadow-[#ff4f38]/10 hover:shadow-[#ff4f38]/20 transition-all duration-350 flex items-center justify-center border border-[#ff4f38]/20 transform hover:-translate-y-0.5"
+                className="w-full max-w-[280px] py-4 bg-ocean-blue hover:bg-[#004b7c] text-white font-sans text-sm font-bold tracking-[0.2em] rounded-lg shadow-lg hover:shadow-ocean-blue/30 transition-all duration-200 flex items-center justify-center transform hover:-translate-y-0.5"
               >
                 ENTER
               </Link>
@@ -111,7 +111,7 @@ export default function Portal() {
           {/* Concentric Circle Member Contractor Badge (ISN-style mockup) */}
           <motion.div variants={itemVariants} className="flex justify-center my-8">
             <svg 
-              className="w-24 h-24 text-[#ff4f38] drop-shadow-[0_0_8px_rgba(255,79,56,0.15)] hover:scale-105 transition-transform duration-300" 
+              className="w-24 h-24 text-orange-cta drop-shadow-[0_0_8px_rgba(249,115,22,0.15)] hover:scale-105 transition-transform duration-300" 
               viewBox="0 0 100 100" 
               fill="none" 
               stroke="currentColor"
@@ -120,7 +120,7 @@ export default function Portal() {
               <circle cx="50" cy="50" r="39" strokeWidth="1" strokeDasharray="3 3" />
               <polygon points="50,28 69,39 69,61 50,72 31,61 31,39" fill="currentColor" fillOpacity="0.1" strokeWidth="1.8" />
               <text x="50" y="51" textAnchor="middle" fill="white" fontSize="9" fontWeight="bold" fontFamily="sans-serif" letterSpacing="0.05em">K-TECH</text>
-              <text x="50" y="61" textAnchor="middle" fill="#ff4f38" fontSize="7" fontWeight="bold" fontFamily="sans-serif" letterSpacing="0.05em">CONTRACTOR</text>
+              <text x="50" y="61" textAnchor="middle" fill="var(--color-orange-cta)" fontSize="7" fontWeight="bold" fontFamily="sans-serif" letterSpacing="0.05em">CONTRACTOR</text>
             </svg>
           </motion.div>
 
@@ -130,7 +130,7 @@ export default function Portal() {
               <span className="text-slate-400 font-light">K-TECH</span>
               <span>GROUP</span>
             </div>
-            <span className="text-[#ff4f38] uppercase tracking-widest text-[10px] font-bold font-sans">
+            <span className="text-orange-cta uppercase tracking-widest text-[10px] font-bold font-sans">
               A Family Alliance Group of Companies
             </span>
           </motion.div>
@@ -167,7 +167,7 @@ export default function Portal() {
           {/* Trust Badges */}
           <div className="flex flex-wrap justify-center items-center gap-5">
             <div className="flex items-center gap-1.5 bg-white/5 px-3 py-1.5 rounded-lg border border-white/5">
-              <Shield className="w-4 h-4 text-[#ff4f38]" />
+              <Shield className="w-4 h-4 text-orange-cta" />
               <span className="font-semibold text-slate-300 text-[9px] uppercase tracking-wider">NIMASA Registered</span>
             </div>
             <div className="flex items-center gap-1.5 bg-white/5 px-3 py-1.5 rounded-lg border border-white/5">
