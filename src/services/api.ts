@@ -1,7 +1,7 @@
 import type { Vessel, TeamMember, Equipment, Message } from '../types';
 
-export const API_BASE_URL = 'https://k-dynamic-api.onrender.com/api';
-export const SERVER_ORIGIN = 'https://k-dynamic-api.onrender.com';
+export const API_BASE_URL = 'https://api.ktechdynamic.com/api';
+export const SERVER_ORIGIN = 'https://api.ktechdynamic.com';
 
 // Helper to construct full image URLs
 export function getImageUrl(path: string | undefined | null): string {
