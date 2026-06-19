@@ -72,18 +72,18 @@ export default function Team() {
             </p>
           </div>
 
-          <div className="flex justify-center">
+          <div className="flex flex-col gap-8 items-center">
             {executives.map((member) => (
               <div
                 key={member.id}
-                className="bg-slate-50 border border-slate-200/60 rounded-2xl p-8 max-w-3xl w-full shadow-sm hover:shadow-md transition-shadow grid grid-cols-1 md:grid-cols-12 gap-8 text-left items-center"
+                className="bg-slate-50 border border-slate-200/60 rounded-2xl p-5 sm:p-8 max-w-3xl w-full shadow-sm hover:shadow-md transition-shadow grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 text-left items-center"
               >
                 {/* Image */}
-                <div className="md:col-span-4 relative group">
+                <div className="md:col-span-4 w-full max-w-[280px] md:max-w-none mx-auto relative group">
                   <img
                     src={getImageUrl(member.image)}
                     alt={member.name}
-                    className="w-full h-72 object-cover rounded-xl shadow border border-slate-200"
+                    className="w-full h-80 md:h-72 object-cover rounded-xl shadow border border-slate-200"
                   />
                   <div className="absolute top-3 right-3 bg-ocean-blue text-white p-2 rounded-lg text-xs font-bold flex items-center gap-1.5 shadow">
                     <Award className="w-4 h-4 text-teal-accent" />
@@ -158,14 +158,14 @@ export default function Team() {
             {managers.map((member) => (
               <div
                 key={member.id}
-                className="bg-white border border-slate-200/60 rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow grid grid-cols-1 md:grid-cols-12 gap-6 text-left items-start"
+                className="bg-white border border-slate-200/60 rounded-2xl p-5 sm:p-6 shadow-sm hover:shadow-md transition-shadow grid grid-cols-1 md:grid-cols-12 gap-6 text-left items-start"
               >
                 {/* Image */}
-                <div className="md:col-span-4 relative">
+                <div className="md:col-span-4 w-full max-w-[240px] md:max-w-none mx-auto relative">
                   <img
                     src={getImageUrl(member.image)}
                     alt={member.name}
-                    className="w-full h-48 object-cover rounded-xl border border-slate-100"
+                    className="w-full h-60 md:h-48 object-cover rounded-xl border border-slate-100"
                   />
                   <div className="absolute top-2 right-2 bg-primary-navy/90 text-white px-2 py-1 rounded text-[9px] font-bold uppercase tracking-wider">
                     Manager
@@ -223,18 +223,18 @@ export default function Team() {
             </p>
           </div>
 
-          <div className="flex justify-center">
+          <div className="flex flex-col gap-8 items-center">
             {supervisors.map((member) => (
               <div
                 key={member.id}
-                className="bg-slate-50 border border-slate-200/60 rounded-2xl p-6 max-w-2xl w-full shadow-sm hover:shadow-md transition-shadow grid grid-cols-1 md:grid-cols-12 gap-6 text-left items-center"
+                className="bg-slate-50 border border-slate-200/60 rounded-2xl p-5 sm:p-6 max-w-2xl w-full shadow-sm hover:shadow-md transition-shadow grid grid-cols-1 md:grid-cols-12 gap-6 text-left items-center"
               >
                 {/* Image */}
-                <div className="md:col-span-4">
+                <div className="md:col-span-4 w-full max-w-[240px] md:max-w-none mx-auto relative">
                   <img
                     src={getImageUrl(member.image)}
                     alt={member.name}
-                    className="w-full h-44 object-cover rounded-xl border border-slate-100"
+                    className="w-full h-60 md:h-44 object-cover rounded-xl border border-slate-100"
                   />
                 </div>
 
