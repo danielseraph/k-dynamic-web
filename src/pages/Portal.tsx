@@ -65,7 +65,7 @@ export default function Portal() {
               <div className="flex flex-col font-headings text-white tracking-wider leading-none">
                 <span className="text-2xl sm:text-3xl font-extrabold tracking-[0.1em]">K-TECH</span>
                 <span className="text-xl sm:text-2xl font-bold text-teal-accent tracking-[0.05em] mt-1">DYNAMIC</span>
-                <span className="text-lg sm:text-xl font-semibold text-slate-300 tracking-[0.15em] mt-1">SERVICES</span>
+                <span className="text-lg sm:text-xl font-semibold text-slate-300 tracking-[0.15em] mt-1">LTD</span>
               </div>
             </div>
             <div className="w-20 h-[3px] bg-teal-accent rounded-full mt-2" />
@@ -120,7 +120,7 @@ export default function Portal() {
               <circle cx="50" cy="50" r="39" strokeWidth="1" strokeDasharray="3 3" />
               <polygon points="50,28 69,39 69,61 50,72 31,61 31,39" fill="currentColor" fillOpacity="0.1" strokeWidth="1.8" />
               <text x="50" y="51" textAnchor="middle" fill="white" fontSize="9" fontWeight="bold" fontFamily="sans-serif" letterSpacing="0.05em">K-TECH</text>
-              <text x="50" y="61" textAnchor="middle" fill="var(--color-orange-cta)" fontSize="7" fontWeight="bold" fontFamily="sans-serif" letterSpacing="0.05em">CONTRACTOR</text>
+              <text x="50" y="61" textAnchor="middle" fill="var(--color-orange-cta)" fontSize="7" fontWeight="bold" fontFamily="sans-serif" letterSpacing="0.05em">DYNAMIC LTD</text>
             </svg>
           </motion.div>
 
@@ -128,10 +128,9 @@ export default function Portal() {
           <motion.div variants={itemVariants} className="flex flex-col items-center gap-1.5 my-6">
             <div className="font-headings text-white tracking-[0.15em] text-xl font-extrabold flex items-center gap-1.5 justify-center">
               <span className="text-slate-400 font-light">K-TECH</span>
-              <span>GROUP</span>
+              <span className="text-orange-cta">DYNAMIC LTD</span>
             </div>
             <span className="text-orange-cta uppercase tracking-widest text-[10px] font-bold font-sans">
-              A Family Alliance Group of Companies
             </span>
           </motion.div>
 
@@ -140,7 +139,7 @@ export default function Portal() {
             variants={itemVariants} 
             className="text-slate-400 text-xs max-w-sm mx-auto leading-relaxed my-4 font-sans px-4"
           >
-            K-TECH DYNAMIC LTD is an affiliated and subsidiary company of K-TECH GROUP.
+            K-TECH DYNAMIC LTD is an affiliated and subsidiary company of K-TECH DYNAMIC LTD.
           </motion.p>
 
           {/* Bottom Holdings Corporate Logo */}
@@ -155,7 +154,7 @@ export default function Portal() {
             />
             <div className="text-left leading-none font-headings text-white">
               <div className="text-xs font-bold tracking-widest uppercase">K-TECH DYNAMIC</div>
-              <div className="text-[10px] text-slate-450 tracking-wider font-semibold uppercase mt-0.5">SERVICES HOLDINGS</div>
+              <div className="text-[10px] text-slate-450 tracking-wider font-semibold uppercase mt-0.5">LTD</div>
             </div>
           </motion.div>
 
